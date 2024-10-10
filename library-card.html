@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for a Library Card - Vallejo Public Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Didot', serif;
+            background-color: #ffffff; 
+            color: #000; 
+        }
+        header {
+            background-image: url('https://images.unsplash.com/photo-1529148482759-b35b25c5f217?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 20px;
+            text-align: center;
+            position: relative;
+        }
+        nav {
+            background-color: #4CBB17; 
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white; 
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Impact', sans-serif;
+            color: #4CBB17; 
+        }
+        main {
+            padding: 20px;
+            font-family: 'Didot', serif;
+            background-color: #ffffff; 
+        }
+        form {
+            background-color: #ffffff; 
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #4CBB17;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CBB17; 
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9QvUwM11OR0CelLxxiItw9flErKkFrAHn6w&s" alt="Library Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="catalog.html">SEARCH THE LIBRARY CATALOG</a></li>
+                <li><a href="library-card.html" class="active">APPLY FOR A LIBRARY CARD</a></li>
+                <li><a href="logon.html">LOG ON TO YOUR LIBRARY ACCOUNT</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Library Card Application</h2>
+            <form action="submit_application.php" method="post">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" required>
+                
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div style="margin-top: 20px;">
+            <p>Contact us at <a href="mailto:info@vallejolibrary.com">info@vallejolibrary.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>

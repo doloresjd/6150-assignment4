@@ -1,0 +1,140 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-image: url('https://images.unsplash.com/photo-1529148482759-b35b25c5f217?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 20px; 
+    text-align: center;
+    position: relative;
+}
+
+nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.search-form {
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ccc;  /* 添加边框 */
+    border-radius: 8px;       /* 添加圆角 */
+    background-color: #f9f9f9; /* 添加背景颜色 */
+}
+
+.categories, .featured-books {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #4CBB17; /* 添加绿色边框 */
+}
+
+section.book {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+
+/* Tablets */
+@media (max-width: 768px) {
+    header {
+        padding: 80px 20px;
+    }
+    
+    nav ul li {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+
+    nav ul {
+        display: block;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    header {
+        padding: 50px 15px;
+        font-size: 18px;
+    }
+
+    nav ul li a {
+        padding: 10px 12px;
+    }
+    
+    .main-content {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 15px;
+    }
+}

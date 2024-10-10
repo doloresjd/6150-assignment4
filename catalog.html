@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog - Vallejo Public Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Didot', serif;
+            background-color: #ffffff; 
+            color: #000; 
+        }
+        header {
+            background-image: url('https://images.unsplash.com/photo-1529148482759-b35b25c5f217?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 20px;
+            text-align: center;
+            position: relative;
+        }
+        nav {
+            background-color: #4CBB17; 
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white; 
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .catalog-header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 36px;
+            padding: 40px;
+            margin-top: -100px;
+            text-align: center;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Impact', sans-serif;
+            color: #4CBB17; 
+        }
+        main {
+            padding: 20px;
+            font-family: 'Didot', serif;
+            background-color: #ffffff; 
+        }
+        .categories {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff; 
+            border: 1px solid #4CBB17; 
+        }
+        .featured-books {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff; 
+        }
+        section.book {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #4CBB17;
+            border-radius: 8px;
+            background-color: #ffffff;
+            color: #000;
+        }
+        .book-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9QvUwM11OR0CelLxxiItw9flErKkFrAHn6w&s" alt="Library Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="catalog.html" class="active">SEARCH THE LIBRARY CATALOG</a></li>
+                <li><a href="library-card.html">APPLY FOR A LIBRARY CARD</a></li>
+                <li><a href="logon.html">LOG ON TO YOUR LIBRARY ACCOUNT</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="search-form">
+            <h2>Search the Catalog</h2>
+            <form>
+                <input type="text" placeholder="Search by title, author, or ISBN" name="search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        
+        <div class="categories">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#">Fiction</a></li>
+                <li><a href="#">Non-fiction</a></li>
+                <li><a href="#">Children's Books</a></li>
+                <li><a href="#">Young Adult</a></li>
+                <li><a href="#">Classics</a></li>
+            </ul>
+        </div>
+        
+        <div class="featured-books">
+            <h3>Featured Books</h3>
+            <section class="book">
+                <h4 class="book-title">Book Title</h4>
+                <p>Author: Author Name</p>
+                <p>ISBN: 123-4567890123</p>
+                <p>Description: This is a description of the book. It gives readers insight into what the book is about.</p>
+                <p>Total Copies: 10</p>
+                <p class="availability">Available: 7</p>
+                <button type="button" onclick="reserveBook(this, '123-4567890123')">Reserve a Copy</button>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>Contact us at <a href="mailto:info@vallejolibrary.com">info@vallejolibrary.com</a></p>
+    </footer>
+    <script>
+        function reserveBook(button, isbn) {
+            fetch('/api/check_login')
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    fetch('/api/reserve_book?isbn=' + isbn)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            button.innerText = 'Reserved';
+                            button.parentNode.querySelector('.availability').innerText = 'Available: ' + (data.availableCopies - 1);
+                            button.parentNode.querySelector('.availability').classList.add('reserved');
+                            button.disabled = true;
+                        } else {
+                            alert('Sorry, the book is no longer available.');
+                        }
+                    });
+                } else {
+                    window.location.href = '/logon.html';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
